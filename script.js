@@ -1,9 +1,11 @@
+/* eslint-disable no-use-before-define */
 const recoverValue = document.querySelector('#lista-tarefas');
 const creatTask = document.querySelector('#criar-tarefa');
 const text = document.querySelector('#texto-tarefa');
 const apaga = document.querySelector('#apaga-tudo');
 const remove = document.querySelector('#remover-finalizados');
 const save = document.querySelector('#salvar-tarefas');
+const removeSelected = document.querySelector('#remover-selecionado');
 
 // Requisitos 5 e 6
 // Referências:
@@ -76,10 +78,28 @@ function remover() {
 }
 remove.addEventListener('click', remover);
 
-// Requisito 12 em andamento
-/* function saveTasks() {
-  const salvarTarefas = document.querySelector('')
-}
+// Requisito 12
+// Storage.setItem: https://developer.mozilla.org/pt-BR/docs/Web/API/Storage/setItem
+// Storage.getItem: https://developer.mozilla.org/pt-BR/docs/Web/API/Storage/getItem
 save.addEventListener('click', saveTasks);
 
+function saveTasks() {
+  localStorage.setItem('listaDeTarefas', recoverValue.innerHTML); // setItem adiciona a chave ao Storage
+}
+
+function returnList() {
+  recoverValue.innerHTML = localStorage.getItem('listaDeTarefas'); // getItem retorna o valor passado pelo setItem
+}
+
+returnList();
+
+// Requisito 13
+
+// Requisito 14
+/* function removeItemSelected() {
+  const selected = document.querySelector('.selected');
+  recoverValue.removeChild(selected);
+}
+
+removeSelected.addEventListener('click', removeItemSelected);
  */
