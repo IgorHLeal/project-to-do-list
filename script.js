@@ -5,6 +5,8 @@ const text = document.querySelector('#texto-tarefa');
 const apaga = document.querySelector('#apaga-tudo');
 const remove = document.querySelector('#remover-finalizados');
 const save = document.querySelector('#salvar-tarefas');
+const moveUp = document.querySelector('#mover-cima');
+const moveDown = document.querySelector('#mover-baixo');
 const removeSelected = document.querySelector('#remover-selecionado');
 
 // Requisitos 5 e 6
@@ -16,6 +18,7 @@ const removeSelected = document.querySelector('#remover-selecionado');
 // creatElement: https://developer.mozilla.org/pt-BR/docs/Web/API/Document/createElement
 function addItem() {
   const item = document.createElement('li');
+
   item.innerText = text.value;
   item.addEventListener('click', corDeFundo); // Faz parte do Requisito 7
   recoverValue.appendChild(item);
@@ -94,12 +97,43 @@ function returnList() {
 returnList();
 
 // Requisito 13
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/previousElementSibling
+// https://developer.mozilla.org/pt-BR/docs/Web/API/Node/nextSibling
+// https://developer.mozilla.org/pt-BR/docs/Web/API/Node/insertBefore
+// https://developer.mozilla.org/pt-BR/docs/Web/API/Element/classList
+// Concluído com ajuda do Roberval Filho na Monitoria Summer do dia 04/01/2021
+function moveTop() {
+  const task = document.querySelectorAll('li');
+  for (let index = 0; index < task.length; index += 1) {
+    if (task[index].classList.contains('selecionaCor') && index > 0) {
+      recoverValue.insertBefore(task[index], task[index].previousElementSibling);
+    }
+  }
+}
+moveUp.addEventListener('click', moveTop);
+
+function moveLow() {
+  const task = document.querySelectorAll('li');
+  console.log(task);
+  for (let index = 0; index < task.length; index += 1) {
+    if (task[index].classList.contains('selecionaCor') && index < task.length) {
+      const currentTask = task[index + 2];
+      recoverValue.insertBefore(task[index], currentTask);
+    }
+  }
+}
+moveDown.addEventListener('click', moveLow);
 
 // Requisito 14
-/* function removeItemSelected() {
-  const selected = document.querySelector('.selected');
-  recoverValue.removeChild(selected);
+// Seguir a mesma lógica do requisito 13
+function removeItemSelected() {
+  const task = document.querySelectorAll('li');
+
+  for (let index = 0; index < task.length; index += 1) {
+    if (task[index].classList.contains('selecionaCor')) {
+      recoverValue.removeChild(task[index]);
+    }
+  }
 }
 
 removeSelected.addEventListener('click', removeItemSelected);
- */

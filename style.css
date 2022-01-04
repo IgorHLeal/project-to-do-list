@@ -25,18 +25,14 @@ input , p , h1 {
 }
 
 .selecionaCor {
-  background-color: rgb(128 , 128 , 128);
+  background-color: gray;
 }
 
 .completed {
   text-decoration: line-through;
 }
 
-#apaga-tudo , #remover-finalizados , #salvar-tarefas , #remover-selecionado {
+#apaga-tudo , #remover-finalizados , #salvar-tarefas , #remover-selecionado , #mover-cima , #mover-baixo {
   margin-left: 15px;
   border-radius: 5px;
 }
-tudo , #remover-finalizados , #salvar-tarefas {
-    margin-left: 15px;
-    border-radius: 5px;
-  }

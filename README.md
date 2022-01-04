@@ -1,6 +1,7 @@
 Esse projeto foi desenvolvido utilizando HTML, CSS e JavaScript. Feito ao final do Bloco 05 do Módulo de Fundamentos do Desenvolvimento Web da [Trybe](https://www.betrybe.com/).
 
-![Página](images/imagem-atualizada.png)
+![Página](images/project.png.png)
+![Página](images/desempenho.png.png)
 
 Requisitos obrigatórios:
 
